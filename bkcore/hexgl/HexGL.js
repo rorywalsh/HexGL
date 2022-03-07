@@ -113,11 +113,18 @@ bkcore.hexgl.HexGL.prototype.reset = function()
 	this.manager.get('game').objects.lowFPS = 0;
 	this.gameplay.start();
 
-	bkcore.Audio.stop('bg');
-	bkcore.Audio.stop('wind');
-	bkcore.Audio.volume('wind', 0.35);
-	bkcore.Audio.play('bg');
-	bkcore.Audio.play('wind');
+	wind.pause();
+	window.currentTime = 0;
+	background.stop();
+	background.currentTime = 0;
+	background.loop = true;
+	background.start();
+	wind.start();
+	// bkcore.Audio.stop('bg');
+	// bkcore.Audio.stop('wind');
+	// bkcore.Audio.volume('wind', 0.35);
+	// bkcore.Audio.play('bg');
+	// bkcore.Audio.play('wind');
 }
 
 bkcore.hexgl.HexGL.prototype.restart = function()
@@ -172,10 +179,12 @@ bkcore.hexgl.HexGL.prototype.initGameplay = function()
 	});
 
 	this.gameplay.start();
-
-	bkcore.Audio.play('bg');
-	bkcore.Audio.play('wind');
-	bkcore.Audio.volume('wind', 0.35);
+	background.loop = true;
+	background.play();
+	wind.play();
+	// bkcore.Audio.play('bg');
+	// bkcore.Audio.play('wind');
+	// bkcore.Audio.volume('wind', 0.35);
 }
 
 bkcore.hexgl.HexGL.prototype.displayScore = function(f, l)
