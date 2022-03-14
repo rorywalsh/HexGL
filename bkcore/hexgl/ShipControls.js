@@ -340,7 +340,9 @@ bkcore.hexgl.ShipControls.prototype.destroy = function()
 {
 	destroyed.play();
 	wind.stop();
-	background.stop();
+	left.stop();
+	right.stop();
+	//background.stop();
 
 	// bkcore.Audio.play('destroyed');
 	// bkcore.Audio.stop('bg');
@@ -416,11 +418,16 @@ bkcore.hexgl.ShipControls.prototype.update = function(dt)
 		{
 			if(this.key.left)
 			{
+				right.volume = Math.max(0, right.volume-0.01);
+				left.volume = Math.min(.5, left.volume+0.01);
 				angularAmount += this.angularSpeed * dt;
 				rollAmount -= this.rollAngle;
+
 			}
 			if(this.key.right)
 			{
+				left.volume = Math.max(0, left.volume-0.01);
+				right.volume = Math.min(.5, right.volume+0.01);
 				angularAmount -= this.angularSpeed * dt;
 				rollAmount += this.rollAngle;
 			}
@@ -466,7 +473,6 @@ bkcore.hexgl.ShipControls.prototype.update = function(dt)
 	// this was the code that caused the background sound to change pitch..
 	// background.preservesPitch = false;
 	// var playbackRate = (this.speed/7)+1;
-	// console.log(this.speed);
 	// background.playbackRate = playbackRate;
 
 	this.movement.z += this.speed * dt;

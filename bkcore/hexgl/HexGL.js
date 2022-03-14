@@ -179,8 +179,12 @@ bkcore.hexgl.HexGL.prototype.initGameplay = function()
 	});
 
 	this.gameplay.start();
-	background.loop = true;
-	background.play();
+	// background.loop = true;
+	// background.play();
+	left.loop = true;
+	right.loop = true;
+	left.play();
+	right.play();
 	wind.play();
 	// bkcore.Audio.play('bg');
 	// bkcore.Audio.play('wind');
