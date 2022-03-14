@@ -471,9 +471,9 @@ bkcore.hexgl.ShipControls.prototype.update = function(dt)
 	this.speedRatio = this.speed / this.maxSpeed;
 
 	// this was the code that caused the background sound to change pitch..
-	// background.preservesPitch = false;
-	// var playbackRate = (this.speed/7)+1;
-	// background.playbackRate = playbackRate;
+	var playbackRate = (this.speed/7)+1;
+	left.playbackRate = playbackRate;
+	right.playbackRate = playbackRate;
 
 	this.movement.z += this.speed * dt;
 

@@ -9,3 +9,6 @@ var left = new Audio('audio/left.ogg');
 left.volume = .5
 var right = new Audio('audio/right.ogg');
 right.volume = .5
+
+left.preservesPitch = false;
+right.preservesPitch = false;
